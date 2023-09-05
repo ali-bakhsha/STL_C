@@ -59,5 +59,6 @@ int main(){
 		vec.push_back(1);
 		cout << "Size: " <<vec.size() << "\t\t" << "Capacity: " <<vec.capacity() << endl;
 	}
-		return 0;
+	
+	return 0;
 }
