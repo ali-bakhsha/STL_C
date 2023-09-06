@@ -1,12 +1,12 @@
 //TOPIC STD::MAP
 //Syntax std::map<T1,T2> objectName where T1 is key type and T2 is value type
 //NOTES:
-// 	std::set is an associated container that store slements in key value combination where key should be unique otherwise it ovelewrides the previos value
+// 	std::map is an associated container that store slements in key value combination where key should be unique otherwise it ovelewrides the previos value
 // it is implemented using self-balance binary search Tree (AVL/Red-Black Tree)
 // It store key value pair in stored order on the basis of key (assending / decending)
 //It generally used in Dictionary type problems.
 
-
+//it is sorted
 
 #include <iostream>
 #include <map>
