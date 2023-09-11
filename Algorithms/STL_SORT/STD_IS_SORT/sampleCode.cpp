@@ -1,11 +1,7 @@
-//STL Algorithm Sort
+//STL Algorithm is_sorted
 
 //NOTES:
-// 0. in C++ STL we have sort function which can sort in increasing and decreasing order
-// 1. Not only integral but user defined data can be sorted using this function.
-// 2. Internaly it uses IntroSort which is combination of Quicksort, Heapsort and Insertionsort.
-// 3. By default it uses Quicksort but if quicksort is doing unfair partionaning and taking more than N*logN time, it switches to Heapsort and when the array size becomes really small, it switches to Inserionsort.
-// 4. We can use partial execution policy for better performance.
+// 0. check if the elements in range[first,last] are sorted in non-descending order?
 
 //Types
 // 1. Sorting integral data types
@@ -36,16 +32,18 @@ struct{
 }customLess;
 int main(){
 	{
-	std::vector<int> vec{4,3,5,2,6,1};
-	
-	std::sort(vec.begin() , vec.end());
-	std::sort(vec.begin() , vec.end() , std::greater<>());
-	std::sort(std::execution::par , vec.begin() , vec.end());
-	std::sort(std::execution::par , vec.begin() , vec.end() , std::greater<int>());
-	for(auto& elm : vec)
-		cout << elm << " ";
+		std::vector<int> vec{4,3,5,2,6,1};
+		
+		std::sort(std::execution::par , vec.begin() , vec.end() , std::greater<int>());
+		std::sort(std::execution::par , vec.begin() , vec.end() );
+		for(auto& elm : vec)
+			cout << elm << " ";
+
+		cout << endl;
+		cout << std::is_sorted(vec.begin() , vec.end()) << endl;
+		cout << std::is_sorted(vec.begin() , vec.end(),std::greater<int>()) << endl;
+		cout << endl<< endl;
 	}
-	cout << endl<< endl;
 	// 2. Sortng user defined data types
 
 	{
@@ -54,11 +52,14 @@ int main(){
 	std::sort(vec.begin() , vec.end());
 	//std::sort(vec.begin() , vec.end() , std::greater<Point>());
 	//std::sort(std::execution::par , vec.begin() , vec.end());
-	//std::sort(std::execution::par , vec.begin() , vec.end() , std::greater<Point>());
+	
 	for(auto& elm : vec)
 		cout << elm.x << " " << elm.y << endl;
-	}
+	
+		cout << endl;
+		cout << std::is_sorted(vec.begin() , vec.end());
 		cout << endl<< endl;
+	}
 		
 	// 3. Sort using a function object
 	// 4. Sort using lambda expression
@@ -70,6 +71,10 @@ int main(){
 	std::sort(vec.begin() , vec.end() , [](int a, int b){return a<b;});
 	for(auto& elm : vec)
 		cout << elm << " ";
+	cout << endl;
+	cout << std::is_sorted(vec.begin() , vec.end()) << endl;
+	cout << std::is_sorted(vec.begin() , vec.end() , customLess);
+	cout << std::is_sorted(vec.begin() , vec.end() , [](int a, int b){return a<b;});
 	}
 	
 	
